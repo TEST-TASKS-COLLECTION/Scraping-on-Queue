@@ -3,11 +3,11 @@ from bs4 import BeautifulSoup as bs
 
 import time
 
-def count_words(url):
+def count_words(url, cookie):
     
     print(f"Counting words at: {url}")
     
-    # time.sleep(2)
+    time.sleep(2)
     
     start = time.time()
     
@@ -28,9 +28,9 @@ def count_words(url):
     print(f"Total words: {len(word_count)}")  
     print(f"Time elapsed: {time_elapsed}")
     
-    with open(f"data/task.txt", "w") as f:
-        f.write(len(word_count))
+    # with open(f"data/task.txt", "w") as f:
+    #     f.write(f"Total words is: {len(word_count)}")
     
     return len(word_count)
-      
+
 

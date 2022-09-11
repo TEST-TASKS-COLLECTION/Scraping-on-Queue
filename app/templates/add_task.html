@@ -10,6 +10,7 @@
     <form action="/add-task">
       <label>Word Count</label>
       <input type="text" name="url" id="url" placeholder="Enter URL" required />
+      <input type="text" name="cookie" placeholder="Enter A term to remember this" required />
       <br>
       {% if message %}
       <small id="emailHelp">{{ message }}</small>
@@ -21,13 +22,14 @@
       <h1>JOB QUEUE</h1>
       {% if jobs %} 
         {% for job in jobs %}
+            <p>{{ job.status }}</p>
             <div>
                 <!-- # <h6>{{ job.func_name }}</h6> -->
                 <p>Function used: {{ job.func_name }}</p> 
                 <p>Args: {{ job.args }}</p>
                 <p>Return Value: {{ job.result }}</p>
                 <small>Job ID: {{ job.id }}</small> 
-                <small>Status: {{ job.status }}</small> 
+                <small>Status: {{ job.get_status() }}</small> 
                 <small 
                 >Created at: {{ job.created_at.strftime('%a, %d %b %Y %H:%M:%S')
                 }}</small
