@@ -3,15 +3,18 @@ from bs4 import BeautifulSoup as bs
 
 import time
 
-def count_words(url, cookie):
+def count_words(url):
     
     print(f"Counting words at: {url}")
     
-    time.sleep(2)
+    time.sleep(10)
     
     start = time.time()
     
     r = requests.get(url)
+    
+    print("THE COOKIE IS:", r.cookies)
+    print("THE COOKIE IS:", r.cookies._cookies)
     
     soup = bs(r.content, "html.parser")
     
@@ -24,7 +27,7 @@ def count_words(url, cookie):
     
     time_elapsed = end - start
     
-    print(word_count)
+    # print(word_count)
     print(f"Total words: {len(word_count)}")  
     print(f"Time elapsed: {time_elapsed}")
     
