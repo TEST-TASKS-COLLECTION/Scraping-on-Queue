@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Queue</title>
+  </head>
+  <body>
+    <form action="/add-task">
+      <label>Word Count</label>
+      <input type="text" name="url" id="url" placeholder="Enter URL" required />
+      <br>
+      {% if message %}
+      <small id="emailHelp">{{ message }}</small>
+      {% endif %}
+      <button type="submit">Submit</button>
+    </form>
+
+    <div>
+      <h1>JOB QUEUE</h1>
+      {% if jobs %} 
+        {% for job in jobs %}
+            <div>
+                <!-- # <h6>{{ job.func_name }}</h6> -->
+                <p>Function used: {{ job.func_name }}</p> 
+                <p>Args: {{ job.args }}</p>
+                <p>Return Value: {{ job.result }}</p>
+                <small>Job ID: {{ job.id }}</small> 
+                <small>Status: {{ job.status }}</small> 
+                <small 
+                >Created at: {{ job.created_at.strftime('%a, %d %b %Y %H:%M:%S')
+                }}</small
+                >
+                <small
+                >Enqueued at: {{ job.enqueued_at.strftime('%a, %d %b %Y %H:%M:%S')
+                }}</small
+                >
+            </div>
+        {% endfor %} 
+      {% else %}
+        <p>No jobs in queue</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
