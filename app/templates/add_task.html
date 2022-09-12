@@ -2,16 +2,16 @@
 %} {% block body %}
 <div class="container">
   <form action="/add-task">
-    <label for="url">Word Count: </label>
-    <input type="text" name="url" id="url" placeholder="Enter URL" required />
-    <br>
+    <div class="mb-3">
+      <label for="url" class="form-label">URL: </label>
+      <input type="text" class="form-control" id="url" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">Insert the URL to scrap and get words count on p tags</div>
+    </div>
     {% if message %}
     <small id="emailHelp">{{ message }}</small>
     {% endif %}
-    <br>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
-</div>
 
 <div class="container">
   <h1 style="text-align: center;">ADD JOB to QUEUE</h1>
