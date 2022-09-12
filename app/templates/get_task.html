@@ -1,33 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>Get Task</title>
-</head>
-<body>
-    {% for job in jobs %}
-        <p>{{ job }}</p>
-        {% if job %}
-        <div>
-            <!-- # <h6>{{ job.func_name }}</h6> -->
-            <p>Function used: {{ job.func_name }}</p> 
-            <p>Args: {{ job.args }}</p>
-            <p>Return Value: {{ job.result }}</p>
-            <small>Job ID: {{ job.id }}</small> 
-            <small>Status: {{ job.get_status() }}</small> 
-            <small 
-            >Created at: {{ job.created_at.strftime('%a, %d %b %Y %H:%M:%S')
-            }}</small
-            >
-            <small
-            >Enqueued at: {{ job.enqueued_at.strftime('%a, %d %b %Y %H:%M:%S')
-            }}</small
-            >
-        </div>
-        {% endif %}
-    {% endfor %}
-</body>
-</html>
+{% extends 'base.html' %} {% block title %}
+Get Task
+{% endblock title %} {% block body %} 
+
+<h1 style="text-align: center;">JOBS</h1>
+{% for job in jobs %} 
+<div class="container">
+{% if job %}
+    <div class="card">
+      <div class="card-header">Job: {{ job }}</div>
+      <div class="card-body">
+        <!-- # <h6>{{ job.func_name }}</h6> -->
+        <p>Function used: {{ job.func_name }}</p>
+        <p>Args: {{ job.args }}</p>
+        <p>Return Value: {{ job.result }}</p>
+        <small>Job ID: {{ job.id }}</small>
+        <small>Status: {{ job.get_status() }}</small>
+      </div>
+      <div class="card-footer">
+        <small
+          >Created at: {{ job.created_at.strftime('%a, %d %b %Y %H:%M:%S') }}</small
+        >
+        <small
+          >Enqueued at: {{ job.enqueued_at.strftime('%a, %d %b %Y %H:%M:%S')
+          }}</small
+        >
+      </div>
+    </div>
+</div>
+<br>
+{% else %}
+<h1>Create a Task</h1>
+{% endif %} {% endfor %} {% endblock body %}
