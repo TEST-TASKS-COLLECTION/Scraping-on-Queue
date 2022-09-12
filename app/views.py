@@ -17,7 +17,9 @@ import json
 
 @app.route("/")
 def index():
-    return "Hello World"
+    r.incr("Hits")
+    hits= r.get('Hits').decode()
+    return render_template('home.html', hits=hits)
 
 def get_user_jobs(cookie):
     if r.get(f"{cookie}"):
