@@ -10,6 +10,7 @@ services:
     depends_on:
       - redis
       - worker
+    restart: on-failure
   
   worker:
     build: .

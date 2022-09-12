@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Job Queue</title>
   </head>
   <body>
@@ -25,9 +26,9 @@
                 <!-- # <h6>{{ job.func_name }}</h6> -->
                 <p>Function used: {{ job.func_name }}</p> 
                 <p>Args: {{ job.args }}</p>
-                <p>Return Value: {{ job.result }}</p>
+                <!-- <p>Return Value: {{ job.result }}</p> -->
                 <small>Job ID: {{ job.id }}</small> 
-                <small>Status: {{ job.get_status() }}</small> 
+                <!-- <small>Status: {{ job.get_status() }}</small>  -->
                 <small 
                 >Created at: {{ job.created_at.strftime('%a, %d %b %Y %H:%M:%S')
                 }}</small

@@ -4,8 +4,8 @@ from rq import Queue
 
 app = Flask(__name__)
 
-# r = Redis(host="redis") # with docker container
-r = Redis()
+r = Redis(host="redis") # with docker container
+# r = Redis()
 q = Queue(connection=r)
 
 
