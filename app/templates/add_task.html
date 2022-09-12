@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block title %} Add Job{% endblock title
 %} {% block body %}
 <div class="container mb-3">
+  <h1 style="text-align: center;">ADD JOB to QUEUE</h1>
   <form action="/add-task">
     <div class="mb-3">
       <label for="url" class="form-label">URL: </label>
@@ -14,8 +15,8 @@
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 
-<div class="container">
-  <h1 style="text-align: center;">ADD JOB to QUEUE</h1>
+<div class="container mt-3">
+  <h1 style="text-align: center;">JOBS ADDED TO QUEUE</h1>
   {% if jobs %} {% for job in jobs %}
   <div class="card">
     <div class="card-header">
