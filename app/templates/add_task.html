@@ -4,8 +4,8 @@
   <form action="/add-task">
     <div class="mb-3">
       <label for="url" class="form-label">URL: </label>
-      <input type="text" class="form-control" id="url" aria-describedby="emailHelp">
-      <div id="emailHelp" class="form-text">Insert the URL to scrap and get words count on p tags</div>
+      <input type="text" class="form-control" name="url" id="url" aria-describedby="emailHelp">
+      <div id="url" class="form-text">Insert the URL to scrap and get words count on p tags</div>
     </div>
     {% if message %}
     <small id="emailHelp">{{ message }}</small>

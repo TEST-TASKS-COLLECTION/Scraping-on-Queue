@@ -32,7 +32,8 @@ def get_user_jobs(cookie):
 def add_task():
 
     cookie = request.cookies.get("user", secrets.token_urlsafe())
-    jobs = q.jobs # get the job in the queue
+    # jobs = q.jobs # get the job in the queue
+    jobs = []
     message = None
     user_jobs = get_user_jobs(cookie)
     job_id = secrets.token_hex(10)
@@ -40,11 +41,10 @@ def add_task():
     print(f"Present user jobs are: {user_jobs}, type: {type(user_jobs)}")
     
     if request.args:
-        
         url = request.args.get("url")
         
         print(url)
-        task = q.enqueue(count_words, url, job_id=f"{job_id}")
+        task = q.enqueue(count_words, url, job_id=job_id)
         
         user_jobs.append(job_id)
         
@@ -59,7 +59,7 @@ def add_task():
     res = make_response(render_template("add_task.html", message=message, jobs=jobs))
     res.set_cookie("user", cookie)
     print("setting job id")
-    r.set(f"{cookie}", " ".join(user_jobs))
+    r.set(cookie, " ".join(user_jobs))
     
     return res
 
