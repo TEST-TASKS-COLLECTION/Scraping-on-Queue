@@ -53,6 +53,7 @@ def add_task():
         # jobs = q.jobs
         # q_len = len(q)
         jobs = get_jobs(user_jobs=user_jobs)
+        # jobs = jobs.append(task)
         q_len = len(jobs)
         print(f"JOBS IS {jobs}")
         message = f"Task queued at {task.enqueued_at.strftime('%a, %d %b %Y %H:%M:%S')}. {q_len} jobs queued"

@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block title %} Add Job{% endblock title
 %} {% block body %}
-<div class="container">
+<div class="container mb-3">
   <form action="/add-task">
     <div class="mb-3">
       <label for="url" class="form-label">URL: </label>
@@ -10,6 +10,7 @@
     {% if message %}
     <small id="emailHelp">{{ message }}</small>
     {% endif %}
+    <br>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 
