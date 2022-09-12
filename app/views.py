@@ -33,9 +33,10 @@ def add_task():
 
     cookie = request.cookies.get("user", secrets.token_urlsafe())
     # jobs = q.jobs # get the job in the queue
-    jobs = []
-    message = None
+    
     user_jobs = get_user_jobs(cookie)
+    jobs = get_jobs(user_jobs)
+    message = None
     job_id = secrets.token_hex(10)
 
     print(f"Present user jobs are: {user_jobs}, type: {type(user_jobs)}")
